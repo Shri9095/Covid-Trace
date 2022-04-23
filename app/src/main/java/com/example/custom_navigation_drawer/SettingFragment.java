@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,11 +27,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 
-public class SettingFragment extends Fragment {
-    TextView tvCases,tvRecovered,tvCritical,tvActive,tvTodayCases,tvTotalDeaths,tvTodayDeaths,tvAffectedCountries;
+public class SettingFragment extends  Fragment implements View.OnClickListener {
+    TextView tvCases, tvRecovered, tvCritical, tvActive, tvTodayCases, tvTotalDeaths, tvTodayDeaths, tvAffectedCountries;
     //    SimpleArcLoader simpleArcLoader;
     ScrollView scrollView;
     PieChart pieChart;
+    Button btnTrack;
 
     public SettingFragment() {
         // Required empty public constructor
@@ -47,7 +49,7 @@ public class SettingFragment extends Fragment {
 
     private void fetchData() {
 
-        String url  = "https://corona.lmao.ninja/v2/all/";
+        String url = "https://corona.lmao.ninja/v2/all/";
 
 //        simpleArcLoader.start();
 
@@ -69,17 +71,15 @@ public class SettingFragment extends Fragment {
                             tvAffectedCountries.setText(jsonObject.getString("affectedCountries"));
 
 
-                            pieChart.addPieSlice(new PieModel("Cases",Integer.parseInt(tvCases.getText().toString()), Color.parseColor("#FFA726")));
-                            pieChart.addPieSlice(new PieModel("Recoverd",Integer.parseInt(tvRecovered.getText().toString()), Color.parseColor("#66BB6A")));
-                            pieChart.addPieSlice(new PieModel("Deaths",Integer.parseInt(tvTotalDeaths.getText().toString()), Color.parseColor("#EF5350")));
-                            pieChart.addPieSlice(new PieModel("Active",Integer.parseInt(tvActive.getText().toString()), Color.parseColor("#29B6F6")));
+                            pieChart.addPieSlice(new PieModel("Cases", Integer.parseInt(tvCases.getText().toString()), Color.parseColor("#FFA726")));
+                            pieChart.addPieSlice(new PieModel("Recoverd", Integer.parseInt(tvRecovered.getText().toString()), Color.parseColor("#66BB6A")));
+                            pieChart.addPieSlice(new PieModel("Deaths", Integer.parseInt(tvTotalDeaths.getText().toString()), Color.parseColor("#EF5350")));
+                            pieChart.addPieSlice(new PieModel("Active", Integer.parseInt(tvActive.getText().toString()), Color.parseColor("#29B6F6")));
                             pieChart.startAnimation();
 
 //                            simpleArcLoader.stop();
 //                            simpleArcLoader.setVisibility(View.GONE);
                             scrollView.setVisibility(View.VISIBLE);
-
-
 
 
                         } catch (JSONException e) {
@@ -97,7 +97,8 @@ public class SettingFragment extends Fragment {
 //                simpleArcLoader.stop();
 //                simpleArcLoader.setVisibility(View.GONE);
                 scrollView.setVisibility(View.VISIBLE);
-                Toast.makeText(SettingFragment.class, error.getMessage(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(SettingFragment.class, error.getMessage(), Toast.LENGTH_SHORT).show();
+
 
             }
         });
@@ -120,22 +121,28 @@ public class SettingFragment extends Fragment {
         tvCritical = view.findViewById(R.id.tvCritical);
         tvActive = view.findViewById(R.id.tvActive);
         tvTodayCases = view.findViewById(R.id.tvTodayCases);
-        tvTotalDeaths =view. findViewById(R.id.tvTotalDeaths);
+        tvTotalDeaths = view.findViewById(R.id.tvTotalDeaths);
         tvTodayDeaths = view.findViewById(R.id.tvTodayDeaths);
-        tvAffectedCountries =view. findViewById(R.id.tvAffectedCountries);
+        tvAffectedCountries = view.findViewById(R.id.tvAffectedCountries);
 
 //        simpleArcLoader = findViewById(R.id.loader);
         scrollView = view.findViewById(R.id.scrollStats);
         pieChart = view.findViewById(R.id.piechart);
-
+        btnTrack = (Button) view.findViewById(R.id.btnTrack);
+        btnTrack.setOnClickListener((View.OnClickListener) this);
 
         fetchData();
         return view;
-    }
-    public void goTrackCountries(View view) {
 
+
+    }
+    @Override
+    public void onClick(View v) {
+        // implements your things
         Intent intent = new Intent(getActivity(), AffectedCountries.class);
         startActivity(intent);
-
     }
+
+
+
 }

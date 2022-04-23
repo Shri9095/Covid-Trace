@@ -24,9 +24,7 @@ public class PageAdapter extends FragmentPagerAdapter {
     {
         switch (position)
         {
-            case 0 : return new ProfileFragment();
-            case 1 : return new SettingFragment();
-            case 2 : return new CategoryFragment();
+
             default: return null;
         }
     }
