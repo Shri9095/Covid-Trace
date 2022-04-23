@@ -86,13 +86,13 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        setting_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, settingimg.class);
-                startActivity(intent);
-            }
-        });
+//        setting_img.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, .class);
+//                startActivity(intent);
+//            }
+//        });
         notification_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

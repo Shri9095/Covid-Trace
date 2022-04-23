@@ -129,7 +129,7 @@ public class SettingFragment extends  Fragment implements View.OnClickListener {
         scrollView = view.findViewById(R.id.scrollStats);
         pieChart = view.findViewById(R.id.piechart);
         btnTrack = (Button) view.findViewById(R.id.btnTrack);
-        btnTrack.setOnClickListener((View.OnClickListener) this);
+        btnTrack.setOnClickListener(this);
 
         fetchData();
         return view;
