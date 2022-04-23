@@ -40,21 +40,7 @@ public class SettingFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        tvCases = findViewById(R.id.tvCases);
-        tvRecovered = findViewById(R.id.tvRecovered);
-        tvCritical = findViewById(R.id.tvCritical);
-        tvActive = findViewById(R.id.tvActive);
-        tvTodayCases = findViewById(R.id.tvTodayCases);
-        tvTotalDeaths = findViewById(R.id.tvTotalDeaths);
-        tvTodayDeaths = findViewById(R.id.tvTodayDeaths);
-        tvAffectedCountries = findViewById(R.id.tvAffectedCountries);
 
-//        simpleArcLoader = findViewById(R.id.loader);
-        scrollView = findViewById(R.id.scrollStats);
-        pieChart = findViewById(R.id.piechart);
-
-
-        fetchData();
 
     }
 
@@ -111,12 +97,14 @@ public class SettingFragment extends Fragment {
 //                simpleArcLoader.stop();
 //                simpleArcLoader.setVisibility(View.GONE);
                 scrollView.setVisibility(View.VISIBLE);
-                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(SettingFragment.class, error.getMessage(), Toast.LENGTH_SHORT).show();
+
             }
         });
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(request);
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        RequestQueue queue = Volley.newRequestQueue(getActivity().getApplicationContext());
+        queue.add(request);
 
 
     }
@@ -125,11 +113,29 @@ public class SettingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_orange, container, false);
+        View view = inflater.inflate(R.layout.fragment_settibng, container, false);
+
+        tvCases = view.findViewById(R.id.tvCases);
+        tvRecovered = view.findViewById(R.id.tvRecovered);
+        tvCritical = view.findViewById(R.id.tvCritical);
+        tvActive = view.findViewById(R.id.tvActive);
+        tvTodayCases = view.findViewById(R.id.tvTodayCases);
+        tvTotalDeaths =view. findViewById(R.id.tvTotalDeaths);
+        tvTodayDeaths = view.findViewById(R.id.tvTodayDeaths);
+        tvAffectedCountries =view. findViewById(R.id.tvAffectedCountries);
+
+//        simpleArcLoader = findViewById(R.id.loader);
+        scrollView = view.findViewById(R.id.scrollStats);
+        pieChart = view.findViewById(R.id.piechart);
+
+
+        fetchData();
+        return view;
     }
     public void goTrackCountries(View view) {
 
-        startActivity(new Intent(getApplicationContext(),AffectedCountries.class));
+        Intent intent = new Intent(getActivity(), AffectedCountries.class);
+        startActivity(intent);
 
     }
 }
