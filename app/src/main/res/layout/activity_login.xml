@@ -155,7 +155,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="160dp"
                 android:background="#F3E45F"
-                android:text="Sign In" />
+                android:text="Login" />
 
             <ProgressBar
                 android:id="@+id/idLoadingPB"
