@@ -49,7 +49,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/graphiksemibold"
-        android:text="Covid-19"
+        android:text="Covid-20222"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
