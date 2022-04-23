@@ -36,8 +36,8 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:text="Login"
-                android:textColor="#236CFF"
-                android:textSize="30dp" />
+                android:textColor="@color/black"
+                android:textSize="40dp" />
 
             <TextView
                 android:id="@+id/emailtext"
@@ -134,7 +134,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="I agree your"
-                    android:textColor="#8EDDFB"
+                    android:textColor="@color/black"
                     android:textSize="14sp" />
 
                 <TextView
@@ -143,7 +143,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:text="Terms &amp; Conditions"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -172,7 +172,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:text="Fogot Password?"
-                android:textColor="#8EDDFB"
+                android:textColor="@color/black"
                 android:textSize="16sp" />
 
 
